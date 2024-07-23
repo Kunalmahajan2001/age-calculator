@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Age calculator</h2>
+
+    <form id="Age calculator">
+        <label for="">Enter Your BirthDate</label>
+        <input type="date" id="Birthdate"> 
+        <button onclick="calculateaAge()" type="button">calculator Age</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script >
+    function calculateaAge()
+    {
+        let birthdate = new Date (document.getElementById('Birthdate').value);
+
+        let currentdate = new Date();
+
+        if(birthdate > currentdate)
+        {
+            document.getElementById('result').innerHTML ="Invalid Date";
+            return;
+        }
+
+        let totalmilliseconds = currentdate - birthdate;
+
+        let totalseconds = Math.floor(totalmilliseconds / 1000);
+
+        let totalminutes = Math.floor(totalseconds / 60 );
+
+        let totalhours = Math.floor (totalminutes / 60);
+
+        let totalDay = Math.floor(totalhours / 24);
+
+        let age = currentdate.getFullYear() - birthdate.getFullYear();
+        const monthDifference = currentdate.getMonth() - birthdate.getMonth();
+        console.log(monthDifference)
+        const dayDifference =currentdate.getDate() - birthdate.getDate();
+
+
+        document.getElementById('result').innerHTML = `
+
+        Your age is ${age} Years <br>
+
+        Total Days ${totalDay} Days <br
+
+        Total Hours ${totalhours} Hours <br>
+ 
+        Total minutes ${totalminutes} minutes <br>
+
+        Total seconds ${totalseconds} seconds <br>
+
+        Total milliseconds ${totalmilliseconds} milliseconds
+
+
+        `
+        
+    }
+    </script>
+</body>
+</html>
